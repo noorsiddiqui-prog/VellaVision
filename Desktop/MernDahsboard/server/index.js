@@ -22,7 +22,9 @@ import {dataUser, dataProduct, dataProductStat, dataTransaction, dataOverallStat
 
 // CONFIGURATIONS
 
-dotenv.config();
+dotenv.config({
+    path: "./.env"
+});
 const app = express()
 app.use(express.json())
 app.use(helmet());
