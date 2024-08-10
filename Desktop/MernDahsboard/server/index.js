@@ -60,6 +60,25 @@ mongoose
     // Only add data one time
 
     // Product.insertMany(dataProduct);
+    // seedProducts();
+    // const operations = dataProduct?.map((product) => ({
+    //   updateOne: {
+    //     filter: { _id: mongoose.Types.ObjectId(product._id) },
+    //     update: { $set: product },
+    //     upsert: true,
+    //   },
+    // }));
+
+    // Product.bulkWrite(operations);
+    // Product.collection.createIndex({ name: 1 }, { unique: true });
+
+    // const database = client.db("test");
+    // const products = database.collection("products");
+
+    // dataProduct.updateMany(query, { $set: updateData });
+
+    console.log("Data upserted successfully!");
+
     // ProductStat.insertMany(dataProductStat);
     // User.insertMany(dataUser);
     // Transaction.insertMany(dataTransaction);
