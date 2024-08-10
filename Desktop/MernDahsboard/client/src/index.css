@@ -1,32 +1,32 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap");
 
 html,
 body,
 #root,
-.app{
-    height: 100%;
-    width: 100%;
-    /* font-family: "Inter", sans-serif; */
-    font-family: 'Outfit', sans-serif;
+.app {
+  height: 100%;
+  width: 100%;
+  /* font-family: "Inter", sans-serif; */
+  font-family: "Outfit", sans-serif;
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 6px; /* Reduced the width of the scrollbar */
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background-color: #997d3d;
+  background-color: transparent; /* Made the track color transparent */
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background-color: #cca752,
-    /* //   700: "#997d3d"; */
+  background-color: #c3983263; /* Set the scrollbar thumb color */
+  border-radius: 10px; /* Added some rounding to the thumb */
 }
 
 /* Handle on Hover */
-::-webkit-scrollbar-track:hover{
-    background-color: #cca752;
+::-webkit-scrollbar-thumb:hover {
+  background-color: #cca752; /* Thumb color on hover */
 }

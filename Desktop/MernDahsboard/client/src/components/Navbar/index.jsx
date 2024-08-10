@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { LightModeOutlined, DarkModeOutlined, Search, SettingsOutlined, ArrowDropDownOutlined } from '@mui/icons-material';
 import FlexBetween from 'components/Flexbox/FlexBetween';
 import { useDispatch } from 'react-redux';
-import { setMode } from 'state';
+import { setMode, setSearchValue } from 'state';
 import profileImage from "assets/profile.jpeg";
 import { AppBar, IconButton, Toolbar, useTheme, InputBase, Typography, Button, Box, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import { useLocation } from 'react-router-dom';
 
 
 const Navbar = ({
@@ -17,12 +18,20 @@ const Navbar = ({
   const theme = useTheme();
 
   const [anchorEl, setAnchorEl] = useState(null);
+  const [search, setSearch] = useState("");
   const isOpen = Boolean(anchorEl);
+  const {pathname} = useLocation()
+  const isProductsPage = pathname === "/products"
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    setSearch(searchValue)
+    dispatch(setSearchValue(searchValue));
   };
 
   return (
@@ -48,7 +57,7 @@ const Navbar = ({
               gap="3rem"
               p="0.1rem 1.5rem"
             >
-              <InputBase placeholder='Search...' />
+              <InputBase placeholder='Search...' onChange={handleSearch} value={search} disabled={!isProductsPage} />
               <IconButton>
                 <Search />
               </IconButton>

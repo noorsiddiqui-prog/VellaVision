@@ -8,6 +8,7 @@ import BreakDownChart from 'components/BreakDownChart'
 import OverviewChart from 'components/OverviewChart'
 import { useGetDashboardQuery } from 'state/api/api';
 import StatBox from 'components/StatBox.jsx'
+import Papa from 'papaparse';
 
 const Dashboard = () => {
 
@@ -48,6 +49,20 @@ const Dashboard = () => {
     },
   ]
 
+const handleDownload = () => {
+  if (data && data.transactions) {
+    const csv = Papa.unparse(data.transactions);
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'report.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+};
+
   return (
     <div>
       <Box m="1.5rem 2.5rem">
@@ -66,7 +81,9 @@ const Dashboard = () => {
                   backgroundColor: theme.palette.secondary.light,
                 color: theme.palette.background.alt,
                 }
-              }} >
+              }}
+              onClick={handleDownload}
+              >
               <DownloadOutlined sx={{ mr: "10px" }} />
               Download Reports
             </Button>
